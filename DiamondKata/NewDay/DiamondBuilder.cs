@@ -9,17 +9,17 @@
             _helper = helper;
         }
 
-        public List<string> GetAllRows(char widestChar)
+        public List<string> GetAllRows(char centralChar)
         {
-            _helper.VerifyCharIsValid(widestChar);
+            _helper.VerifyCharIsValid(centralChar);
 
             var result = new List<string>();
-            var rowBuilder = new DiamondRowBuilder(_helper, widestChar);
+            var rowBuilder = new DiamondRowBuilder(_helper, centralChar);
 
-            for (char ch = DiamondHelper.MIN_CHAR; ch <= widestChar; ch++)
+            for (char ch = DiamondHelper.MIN_CHAR; ch <= centralChar; ch++)
                 result.Add(rowBuilder.CreateRow(ch));
 
-            for (char ch = (char)(widestChar - 1); ch >= DiamondHelper.MIN_CHAR; ch--)
+            for (char ch = (char)(centralChar - 1); ch >= DiamondHelper.MIN_CHAR; ch--)
                 result.Add(rowBuilder.CreateRow(ch));
 
             return result;

@@ -28,7 +28,7 @@ namespace NewDay.Tests
         {
             var sut = new DiamondRowBuilder(new DiamondHelper(), maxChar);
 
-            var width = sut.GetDiamondWidth(maxChar);
+            var width = sut.GetDiamondWidth();
 
             Assert.Equal(expectedWidth, width);
         }

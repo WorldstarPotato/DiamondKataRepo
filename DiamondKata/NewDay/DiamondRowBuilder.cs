@@ -3,15 +3,15 @@
     public class DiamondRowBuilder
     {
         private readonly DiamondHelper _helper;
-        private readonly char _widestChar;
+        private readonly char _centralChar;
         private readonly int _diamondWidth;
 
-        public DiamondRowBuilder(DiamondHelper helper, char widestChar)
+        public DiamondRowBuilder(DiamondHelper helper, char centralChar)
         {
             _helper = helper;
-            _widestChar = widestChar;
-            _helper.VerifyCharIsValid(widestChar);
-            _diamondWidth = GetDiamondWidth(_widestChar);
+            _centralChar = centralChar;
+            _helper.VerifyCharIsValid(centralChar);
+            _diamondWidth = GetDiamondWidth();
         }
 
         public string CreateRow(char lastChar)
@@ -25,14 +25,14 @@
             return new String(chars);
         }
 
-        public int GetDiamondWidth(char lastChar)
+        public int GetDiamondWidth()
         {
-            return 2 * (lastChar - DiamondHelper.MIN_CHAR) + 1;
+            return 2 * (_centralChar - DiamondHelper.MIN_CHAR) + 1;
         }
 
         public (int idx1, int idx2) GetIndexesForCharToChange(char ch)
         {
-            var positionOfChar = _widestChar - ch;
+            var positionOfChar = _centralChar - ch;
             return (positionOfChar, _diamondWidth - positionOfChar - 1);
         }
     }
